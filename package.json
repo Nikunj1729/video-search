@@ -15,10 +15,9 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "engines": {
-    "node": "12.16.x"
+    "eject": "react-scripts eject",
+    "prodStart": "react-scripts start",
+    "prodBuild": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"
