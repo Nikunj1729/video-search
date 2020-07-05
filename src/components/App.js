@@ -1,6 +1,8 @@
 import React from "react";
+import c from 'classnames';
 import { KEY } from "../api/youtube";
 import axios from "axios";
+import windowResize from '../utils/windowResize';
 import SearchBar from "./SearchBar";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
@@ -34,15 +36,16 @@ class App extends React.Component {
   }
 
   render() {
+    const width = this.props.windowWidth;
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar onSubmit={this.onTermSubmit} />
         <div className="ui grid">
-          <div className="ui row">
+          <div className={c("ui", width < 767 ? 'column' : 'row')}>
             <div className="eleven wide column">
               <VideoDetail video={this.state.selectedVideo} />
             </div>
-            <div className="five wide column">
+            <div className={c("five wide column", width < 767 && 'ui segment')}>
               <VideoList
                 videos={this.state.videos}
                 onVideoSelect={this.onVideoSelect}
@@ -55,4 +58,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default windowResize(App);
